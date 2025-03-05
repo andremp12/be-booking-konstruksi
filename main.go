@@ -117,6 +117,7 @@ func main() {
 	v1.POST("/register", authenticationController.Register)
 	v1.POST("/login", authenticationController.Login)
 	v1.GET("/tipe-konstruksi/landing", tipeKonstruksiController.GetTipeLanding)
+	v1.POST("/tipe-konstruksi", tipeKonstruksiController.CreateData)
 
 	authorized := v1.Use(middleware.Auth(db))
 
@@ -124,9 +125,9 @@ func main() {
 	authorized.POST("/logout", authenticationController.Logout)
 
 	// API tipe konstruksi
+
 	authorized.GET("/tipe-konstruksi", tipeKonstruksiController.GetAllData)
 	authorized.GET("/tipe-konstruksi/:id", tipeKonstruksiController.GetData)
-	authorized.POST("/tipe-konstruksi", tipeKonstruksiController.CreateData)
 	authorized.PUT("/tipe-konstruksi/:id", tipeKonstruksiController.UpdateData)
 	authorized.DELETE("/tipe-konstruksi/:id", tipeKonstruksiController.Delete)
 

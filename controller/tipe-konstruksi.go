@@ -121,7 +121,7 @@ func (tipeController *tipeKonstruksiController) CreateData(c *gin.Context) {
 	if requestTipe.FileImage != nil {
 		fileName := fmt.Sprintf("%d-%s", time.Now().UnixNano(), requestTipe.FileImage.Filename)
 		filepath := filepath.Join("images", fileName)
-		requestTipe.Image = fmt.Sprintf("%s/%s", os.Getenv("BASE_URL"), filepath)
+		requestTipe.Image = fmt.Sprintf("%s/images/%s", os.Getenv("BASE_URL"), fileName)
 
 		//Simpan file ke dalam folder images dengan nama yang telah sesuai format
 		err = c.SaveUploadedFile(requestTipe.FileImage, filepath)
@@ -183,7 +183,7 @@ func (tipeController *tipeKonstruksiController) UpdateData(c *gin.Context) {
 	if requestTipe.FileImage != nil {
 		fileName := fmt.Sprintf("%d-%s", time.Now().UnixNano(), requestTipe.FileImage.Filename)
 		filepath := filepath.Join("images", fileName)
-		requestTipe.Image = fmt.Sprintf("%s/%s", os.Getenv("BASE_URL"), filepath)
+		requestTipe.Image = fmt.Sprintf("%s/images/%s", os.Getenv("BASE_URL"), fileName)
 
 		//Simpan file ke dalam folder images dengan nama yang telah sesuai format
 		err = c.SaveUploadedFile(requestTipe.FileImage, filepath)
